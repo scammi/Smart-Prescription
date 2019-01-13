@@ -1,4 +1,4 @@
-pragma solidity ^0.5.2;
+pragma solidity ^0.5.0;
 
 contract creatorPrescription {
 
@@ -14,11 +14,5 @@ contract creatorPrescription {
 
   uint prescriptionId;
   mapping (uint => prescription) prescriptions;
-
-  function createPrescription (string _medication, uint _dose) returns (uint prescriptionId) {
-    prescriptionId = prescriptionId++;
-    prescriptions[prescriptionId] = prescription(sudo, patientStatic, _medication, _dose);
-    return prescriptionId;
-  }
 
 }
