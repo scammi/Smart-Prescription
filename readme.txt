@@ -1,17 +1,27 @@
-#SmartPrescriptions
+# Smart-Prescription
+Digital medical drug prescription with smart contracts
 
-We are trying to achive a simple bare bone program, that uses a sudo address to create erc721 tokens
-this token will emulate prescriptions and will have their own logic.
+#### About.
+Electronic medical drug prescription emulated with smart contracts.
+Enables physicians to create ERC271 nonfungible tokens that are delegated to the patient address. The token is exchanged in a pharmacy for the drug and burned.
 
-there are 3 main players and a cordinator (goberment) or sudo for now. The other 3 players are
-the doctor, the patient and the pharmacies. Every each one will have different permissions.
+The token struct contains de following variables:
+  * PatientAdress
+  * Drug
+  * Dose
+  * Counter
 
-First all methods and variables will be created and the sudo account will be used to test, later
-every party will be delegated it's function by permissions.
+It is intended to be possible to add programmable elements to such a system, enabling automated refills, expiration dates, and detection of contraindications and adverse effects.
+
+There are 3 main players and a coordinator (government) or sudo for now. The other 3 players are
+the doctor, the patient, and the pharmacies. Every each one will have different permissions.
+
+First, all methods and variables will be created and the sudo account will be used to test, later
+every party will be delegated its function by permissions.
 
 Main methods.
-  -create structs
-  -view method (get)
+  * create structs
+  * view
 Main variables
-  -struct for prescriptions
-  -an dynamic array to store 
+  * struct for prescriptions
+  * dynamic array for prescriptions
