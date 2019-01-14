@@ -1,5 +1,5 @@
-var Main = artifacts.require("./main.sol");
+var main = artifacts.require("./main.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Main);
+  deployer.deploy(main);
 };
