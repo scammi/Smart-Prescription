@@ -10,13 +10,13 @@ contract main{
     uint dose;
   }
 
-  uint public prescriptionId;
+  uint public prescriptionId = 0;
   mapping (uint => prescription) public prescriptions;
 
-  function addCounter (string memory _medication, uint _dose) public returns (uint){
-    prescriptionId = prescriptionId++;
+  function addCounter (string memory _medication, uint _dose) public{
+    prescriptionId++;
     prescriptions[prescriptionId] = prescription(doctor, _medication, _dose);
-    return (prescriptionId);
+
   }
 
 }
