@@ -3,25 +3,31 @@ pragma solidity ^0.5.0;
 contract main{
 
   address goverment;
-  constructor() public{
-    goverment = msg.sender;
-  }
-
-  address[] private doctors;
-
+  uint public prescriptionId;
+  address[] public doctors;
   struct prescription {
     address emmiter;
     string medication;
     uint dose;
   }
 
-  uint public prescriptionId = 0;
+  constructor() public{
+    goverment = msg.sender;
+  }
+
+  modifier beDoc (address _doctor){
+        require(
+            doctors[_doctor].exists,
+            "Only doctors can call this function."
+        );
+        _;
+    }
+
   mapping (uint => prescription) public prescriptions;
 
-  function addCounter (address _doctor, string memory _medication, uint _dose) public{
+  function addCounter (address _doctor, string memory _medication, uint _dose) public beDoc(_doctor){
     prescriptionId++;
     prescriptions[prescriptionId] = prescription(_doctor, _medication, _dose);
-
   }
 
   function addDoctor (address _doctor) public{
