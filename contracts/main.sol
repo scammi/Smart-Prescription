@@ -35,7 +35,7 @@ contract main{
     return doctors[_doctor];
   }
   function seePharmacy (address _pharmacy) public view returns (bool){
-    returns pharmacies[_pharmacy];
+    return pharmacies[_pharmacy];
   }
 
 //first checks if doctor allows, if so, it adds a prescription construct to the mapping
@@ -50,8 +50,8 @@ contract main{
 //to modify i gonna try to access the mapping
 //to destroy we need a new function
 //owner of the prescription is anyone who has it
-function giveDrug(uint _prescriptionId, address _pharmacy) {
-  requiere (seePharmacy(_pharmacy) == true, "ONLY REGISTER PHARMACY AND MODIFY PRESCRIPTION");
+function giveDrug(uint _prescriptionId, address _pharmacy) public{
+  require (seePharmacy(_pharmacy) == true, "ONLY REGISTER PHARMACY AND MODIFY PRESCRIPTION");
   uint refill = prescriptions[_prescriptionId].refill;
     if (refill == 0){
       delete (prescriptions[_prescriptionId]);
