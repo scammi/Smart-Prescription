@@ -39,7 +39,7 @@ contract main{
   }
 
 //first checks if doctor allows, if so, it adds a prescription construct to the mapping
-  function addPresciption (address _doctor, string memory _medication, uint _dose, uint _refill) public{
+  function addPrescription (address _doctor, string memory _medication, uint _dose, uint _refill) public{
     require (seeDoctor(_doctor) == true, "ONLY DOCTORS CAN PRESCRIBE");
     prescriptionId++;
     prescriptions[prescriptionId] = prescription(_doctor, _medication, _dose, _refill);
