@@ -73,8 +73,9 @@ contract main is ERC721{
 
 /**
 *@dev creates a new prescription construct which is added to prescription
-*mapping using as key prescription ID
-*it first evaluates if the emmiter has permission
+*mapping using as key prescription ID.
+*Then _mint from zepelin ERC721 standar creates a NFT and gives to patient address
+*it also evaluates if the emmiter has permission with require
 *increments the prescriptionId
 *@param _doctor address emmiter
 *@param _medication string drug being prescribed
@@ -106,7 +107,6 @@ function giveDrug(uint _prescriptionId, address _pharmacy) public{
     if (refill == 0){
 
       delete (prescriptions[_prescriptionId]);
-
       _burn(_prescriptionId);
 
     } else {
