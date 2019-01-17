@@ -4,6 +4,7 @@ contract main{
 
   address goverment;
   uint public prescriptionId;
+
   struct prescription {
     address emmiter;
     string medication;
