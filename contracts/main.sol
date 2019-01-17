@@ -34,7 +34,6 @@ contract main{
     goverment = msg.sender;
   }
 
-//government gives permission
 /**
 *@dev sudo account gives doctors address permission to mint prescriptions tokens
 *@param _doctor address belongs to the doctor to give mint rights
