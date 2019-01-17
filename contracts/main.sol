@@ -1,10 +1,11 @@
 pragma solidity ^0.5.0;
 
+import 'openzeppelin-solidity/contracts/token/ERC721/ERC721.sol';
 /**
  * @title Smart-Presciptions emulated with smart contrats
  * @dev see https://github.com/scammi/Smart-Prescription
  */
-contract main{
+contract main is ERC721{
 
 //sudo account
   address goverment;
@@ -72,20 +73,23 @@ contract main{
 
 /**
 *@dev creates a new prescription construct which is added to prescription
-*mapping using as key prescription ID
-*it first evaluates if the emmiter has permission
+*mapping using as key prescription ID.
+*Then _mint from zepelin ERC721 standar creates a NFT and gives to patient address
+*it also evaluates if the emmiter has permission with require
 *increments the prescriptionId
 *@param _doctor address emmiter
 *@param _medication string drug being prescribed
 *@param _dose uint the amount of the drug
 *@param _refill uint times the prescription is valid
 */
-  function addPrescription (address _doctor, string memory _medication, uint _dose, uint _refill) public{
+  function addPrescription (address _patient, address _doctor, string memory _medication, uint _dose, uint _refill) public{
     require (seeDoctor(_doctor) == true, "ONLY DOCTORS CAN PRESCRIBE");
 
     prescriptionId++;
 
     prescriptions[prescriptionId] = prescription(_doctor, _medication, _dose, _refill);
+
+    _mint(_patient, prescriptionId);
   }
 
 /**
@@ -103,6 +107,7 @@ function giveDrug(uint _prescriptionId, address _pharmacy) public{
     if (refill == 0){
 
       delete (prescriptions[_prescriptionId]);
+      _burn(_prescriptionId);
 
     } else {
 
