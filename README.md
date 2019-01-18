@@ -25,3 +25,9 @@ Main methods.
 Main variables
   * struct for prescriptions
   * dynamic array for prescriptions
+
+#### Installation guide
+1. thinks you'll need
+	* Truffle framework
+	* Ganache or other local blockchain
+2
