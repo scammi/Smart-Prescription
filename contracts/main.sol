@@ -8,15 +8,15 @@ import 'openzeppelin-solidity/contracts/token/ERC721/ERC721.sol';
  */
 contract main is ERC721{
 
-//sudo account
+//sudo account that grants permissions
   address goverment;
 
-//ID prescription
+//ID of every prescription
   uint public prescriptionId;
 
 //Struct emulating a pharmaceutical prescription
   struct prescription {
-    address emmiter;
+    address emitter;
     string medication;
     uint dose;
     uint refill;
@@ -31,7 +31,7 @@ contract main is ERC721{
 //Mapping from doctors address to its permission
   mapping (address => bool) public doctors;
 
-//Owner of the contract has administration privileges
+//Constructor of contarct makes goverment sudo administration privileges
   constructor() public{
     goverment = msg.sender;
   }
@@ -40,20 +40,20 @@ contract main is ERC721{
 *@dev sudo account gives doctors address permission to mint prescriptions tokens
 *@param _doctor address belongs to the doctor to give mint rights
 */
-  function addDoctor (address _doctor) public{
+  function addDoctor (address _doctor, bool _bool) public{
     require(msg.sender == goverment);
 
-    doctors[_doctor] = true;
+    doctors[_doctor] = _bool;
   }
 
 /**
 *@dev sudo account gives pharmacies permission to modify tokens
 *@param _pharmacy address belongs to the pharmacy to give rights to
 */
-  function addPharmacy (address _pharmacy) public{
+  function addPharmacy (address _pharmacy, bool _bool) public{
     require(msg.sender == goverment);
 
-    pharmacies[_pharmacy] = true;
+    pharmacies[_pharmacy] = _bool;
   }
 
 /**
