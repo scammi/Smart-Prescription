@@ -40,7 +40,7 @@ contract main is ERC721{
 *@dev sudo account gives doctors address permission to mint prescriptions tokens
 *@param _doctor address belongs to the doctor to give mint rights
 */
-  function addDoctor (address _doctor, bool _bool) public{
+  function permissionDoctor (address _doctor, bool _bool) public{
     require(msg.sender == goverment);
 
     doctors[_doctor] = _bool;
@@ -50,7 +50,7 @@ contract main is ERC721{
 *@dev sudo account gives pharmacies permission to modify tokens
 *@param _pharmacy address belongs to the pharmacy to give rights to
 */
-  function addPharmacy (address _pharmacy, bool _bool) public{
+  function permissionPharmacy (address _pharmacy, bool _bool) public{
     require(msg.sender == goverment);
 
     pharmacies[_pharmacy] = _bool;
@@ -84,7 +84,7 @@ contract main is ERC721{
 *@param _refill uint times the prescription is valid
 */
   function addPrescription (address _patient, address _doctor, string memory _medication, uint _dose, uint _refill) public{
-    require (seeDoctor(_doctor) == true, "ONLY DOCTORS CAN PRESCRIBE");
+    require (seeDoctor(_doctor) == true, "ONLY VALID DOCTORS CAN PRESCRIBE");
 
     prescriptionId++;
 
@@ -102,7 +102,7 @@ contract main is ERC721{
 @param _pharmacy address belongs to the pharmacy calling this function
 */
 function giveDrug(uint _prescriptionId, address _pharmacy) public{
-  require (seePharmacy(_pharmacy) == true, "ONLY REGISTER PHARMACY AND MODIFY PRESCRIPTION");
+  require (seePharmacy(_pharmacy) == true, "ONLY VALID PHARMACY AND MODIFY PRESCRIPTION");
 
   uint refill = prescriptions[_prescriptionId].refill;
     if (refill == 0){
