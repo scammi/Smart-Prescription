@@ -27,7 +27,12 @@ Main variables
   * dynamic array for prescriptions
 
 #### Installation guide
-1. thinks you'll need
+1. things you'll need
+	* npm
 	* Truffle framework
 	* Ganache or other local blockchain
-2
+2. Clone the respository to your machine
+3. Fire up ganache and open CLI on the proyect directory
+4. Run truffle build | truffle migrate --reset
+	* now we have deployed our contract to the local chain and we are ready to interact with it
+5. Run truffle console 
