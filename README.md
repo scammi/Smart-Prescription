@@ -19,20 +19,13 @@ the doctor, the patient, and the pharmacies. Every each one will have different 
 First, all methods and variables will be created and the sudo account will be used to test, later
 every party will be delegated its function by permissions.
 
-Main methods.
-  * create structs
-  * view
-Main variables
-  * struct for prescriptions
-  * dynamic array for prescriptions
-
 #### Installation guide
-1. things you'll need
+Things you'll need
 	* npm
 	* Truffle framework
 	* Ganache or other local blockchain
-2. Clone the respository to your machine
-3. Fire up ganache and open CLI on the proyect directory
-4. Run truffle build | truffle migrate --reset
+1. Clone the respository to your machine
+2. Fire up ganache and open CLI on the proyect directory
+3. Run truffle build | truffle migrate --reset
 	* now we have deployed our contract to the local chain and we are ready to interact with it
-5. Run truffle console 
+4. Run truffle console 
