@@ -1,5 +1,5 @@
-var main = artifacts.require("./main.sol");
+var smartPrescription = artifacts.require("./smartPrescription.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(main);
+  deployer.deploy(smartPrescription);
 };
